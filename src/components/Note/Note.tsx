@@ -1,30 +1,36 @@
 import React from 'react';
-
+import { handleChange } from '../modules/handleChange';
 interface PostitValues {
+  id: number;
   title: string;
   description: string;
 }
 
 interface NoteListProps {
   noteList: PostitValues[];
+  setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>;
 }
 
-const Note: React.FC<NoteListProps> = ({ noteList }: NoteListProps) => {
+const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListProps) => {
   const renderNotes = (noteItemPrams: PostitValues[]) => {
     const noteItems = noteItemPrams.map((item: PostitValues, index: number) => {
       return (
         <li className="note" key={index}>
           <input
+            id={index.toString()}
+            name="title"
             type="text"
             style={{ border: 'none' }}
             value={item.title}
-            // onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => handleChange(e, noteList, setPostitValues)}
             placeholder="Title"
             className="note_title"
           />
           <textarea
+            id={index.toString()}
+            name="description"
             value={item.description}
-            // onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => handleChange(e, noteList, setPostitValues)}
             placeholder="Description..."
             className="note_description"
             style={{ border: 'none', borderTop: '1px solid black' }}

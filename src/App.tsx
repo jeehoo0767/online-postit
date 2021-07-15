@@ -5,15 +5,16 @@ import NoteList from './components/Note/NoteList';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 interface PostitValues {
+  id: number;
   title: string;
   description: string;
 }
 
 const App: React.FC = () => {
   const [postitValues, setPostitValues] = useState<PostitValues[]>([
-    { title: '1', description: '1번의 내용' },
-    { title: '2', description: '2번의 내용' },
-    { title: '3', description: '3번의 내용' },
+    { id: 0, title: '1', description: '1번의 내용' },
+    { id: 1, title: '2', description: '2번의 내용' },
+    { id: 2, title: '3', description: '3번의 내용' },
   ]);
   return (
     <Container className="mt-5">
@@ -24,7 +25,7 @@ const App: React.FC = () => {
             <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
           </Col>
           <Col lg="10">
-            <NoteList noteList={postitValues} />
+            <NoteList noteList={postitValues} setPostitValues={setPostitValues} />
           </Col>
         </Row>
       </Card>
