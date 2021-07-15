@@ -10,7 +10,7 @@ interface PostitValues {
 }
 
 const App: React.FC = () => {
-  const [postitValues] = useState<PostitValues[]>([
+  const [postitValues, setPostitValues] = useState<PostitValues[]>([
     { title: '1', description: '1번의 내용' },
     { title: '2', description: '2번의 내용' },
     { title: '3', description: '3번의 내용' },
@@ -21,7 +21,7 @@ const App: React.FC = () => {
       <Card className="mt-3" style={{ height: '80vh' }}>
         <Row>
           <Col lg="2">
-            <Header noteTitle={postitValues} />
+            <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
           </Col>
           <Col lg="10">
             <NoteList noteList={postitValues} />
