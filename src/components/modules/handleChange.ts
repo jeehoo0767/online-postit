@@ -17,7 +17,6 @@ export const handleChange = (
   noteItemsParams: PostitValues[],
   setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>,
 ) => {
-  console.log(`${e.target.name} : ${e.target.value}`);
   const nextItems = noteItemsParams.map((item: PostitValues, index: number) => {
     if (e.target.id === index.toString()) {
       return {
