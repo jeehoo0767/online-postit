@@ -13,6 +13,10 @@ interface NoteTitleProps {
 }
 
 const Header: React.FC<NoteTitleProps> = ({ noteTitle, setPostitValues }) => {
+  /**
+   * @포스트잇 포스트잇 제목을 map함수를 이용하여 순회한다
+   * @param titleParam {PostitValues[]} map으로 순회하며 화면에 보여줄 내용을 가진 state 배열
+   */
   const renderNoteTitle = (titleParam: PostitValues[]) => {
     const titleItem = titleParam.map((item: PostitValues, index: number) => {
       return (
@@ -30,9 +34,13 @@ const Header: React.FC<NoteTitleProps> = ({ noteTitle, setPostitValues }) => {
     return titleItem;
   };
 
-  const addPost = () => {
-    const nextPost = [...noteTitle];
-    nextPost.push({ id: noteTitle[noteTitle.length - 1].id + 1, title: '', description: '' });
+  /**
+   * @포스트잇 포스트잇 항목을 추가한다
+   * @param noteItems {PostitValues[]} nextState를 복사 할 기존 state
+   */
+  const addPost = (noteItems: PostitValues[]) => {
+    const nextPost = [...noteItems];
+    nextPost.push({ id: noteItems[noteItems.length - 1].id + 1, title: '', description: '' });
     setPostitValues(nextPost);
   };
 
@@ -40,7 +48,7 @@ const Header: React.FC<NoteTitleProps> = ({ noteTitle, setPostitValues }) => {
     <div className="header">
       {renderNoteTitle(noteTitle)}
       <div className="text-center">
-        <Button onClick={() => addPost()}>+</Button>
+        <Button onClick={() => addPost(noteTitle)}>+</Button>
       </div>
     </div>
   );

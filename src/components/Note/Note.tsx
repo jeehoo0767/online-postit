@@ -12,6 +12,10 @@ interface NoteListProps {
 }
 
 const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListProps) => {
+  /**
+   * @포스트잇 포스트잇을 map함수를 이용하여 순회한다
+   * @param noteItemPrams {PostitValues[]} map으로 순회하며 화면에 보여줄 내용을 가진 state 배열
+   */
   const renderNotes = (noteItemPrams: PostitValues[]) => {
     const noteItems = noteItemPrams.map((item: PostitValues, index: number) => {
       return (
