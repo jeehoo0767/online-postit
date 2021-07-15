@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { handleChange } from './modules/handleChange';
+import { handleChange } from './modules/eventHandler';
 interface PostitValues {
   id: number;
   title: string;
@@ -14,7 +14,7 @@ interface NoteTitleProps {
 
 const Header: React.FC<NoteTitleProps> = ({ noteTitle, setPostitValues }) => {
   /**
-   * @포스트잇 포스트잇 제목을 map함수를 이용하여 순회한다
+   * 포스트잇 제목을 map함수를 이용하여 순회한다
    * @param titleParam {PostitValues[]} map으로 순회하며 화면에 보여줄 내용을 가진 state 배열
    */
   const renderNoteTitle = (titleParam: PostitValues[]) => {

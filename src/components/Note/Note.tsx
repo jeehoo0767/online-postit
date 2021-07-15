@@ -1,5 +1,5 @@
 import React from 'react';
-import { handleChange } from '../modules/handleChange';
+import { handleChange } from '../modules/eventHandler';
 interface PostitValues {
   id: number;
   title: string;
@@ -13,7 +13,7 @@ interface NoteListProps {
 
 const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListProps) => {
   /**
-   * @포스트잇 포스트잇을 map함수를 이용하여 순회한다
+   * 포스트잇을 map함수를 이용하여 순회한다
    * @param noteItemPrams {PostitValues[]} map으로 순회하며 화면에 보여줄 내용을 가진 state 배열
    */
   const renderNotes = (noteItemPrams: PostitValues[]) => {
