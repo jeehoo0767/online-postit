@@ -1,38 +1,100 @@
-.App {
-  text-align: center;
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+input,
+textarea {
+  outline: none;
+  resize: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrap {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.note-wrap {
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+  height: 80vh;
+}
+
+.header {
+  /* padding: 1.5rem; */
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+  height: 80vh;
+}
+
+.notes_list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin: 0;
+}
+.note {
+  width: 15rem;
+  height: 15rem;
+  margin: 10px;
+  background-color: lightyellow;
+  border: 1px solid grey;
+  box-shadow: 2px 2px 3px lightgrey;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+}
+.note_title,
+.note_description {
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
 }
 
-.App-link {
-  color: #61dafb;
+.note_title {
+  font-size: 16px;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.note_description {
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.note_delete {
+  position: absolute;
+  top: -3px;
+  right: 5px;
+  font-size: 20px;
+  color: lightgrey;
+  padding: 5px;
+}
+
+.note_reduce {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -3px;
+  right: 25px;
+  font-size: 20px;
+  color: lightgrey;
+  padding: 5px;
+}
+
+.note_delete:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.note_reduce:hover {
+  color: black;
+  cursor: pointer;
 }

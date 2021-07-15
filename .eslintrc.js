@@ -34,13 +34,19 @@ module.exports = {
   rules: {
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'brace-style': 'off',
-    'comma-dangle': ["error", "always-multiline"],
+    'comma-dangle': ['error', 'always-multiline'],
     'constructor-super': 'error',
     'eol-last': 'off',
     eqeqeq: ['error', 'smart'],
     'guard-for-in': 'error',
     'no-bitwise': 'error',
     'no-caller': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'no-empty': [
       'error',
       {
