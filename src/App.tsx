@@ -20,7 +20,7 @@ const App: React.FC = () => {
   return (
     <Container className="mt-5">
       <div className="h1 text-center">Online Post-it</div>
-      <Card className="mt-3" style={{ minHeight: '80vh' }}>
+      <Card className="my-3" style={{ minHeight: '80vh' }}>
         <Row>
           <Col lg="2">
             <Header noteTitle={postitValues} setPostitValues={setPostitValues} />

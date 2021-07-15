@@ -16,12 +16,6 @@ textarea {
   resize: none;
 }
 
-.wrap {
-  width: 100%;
-  padding: 2rem;
-  display: flex;
-}
-
 .note-wrap {
   border-left: 1px solid rgba(0, 0, 0, 0.125);
   min-height: 80vh;
