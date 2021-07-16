@@ -31,6 +31,18 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
+    if (JSON.parse(localStorage.getItem('noteList') as string).length === 0) {
+      setPostitValues([
+        { id: 0, title: '1', description: '1번의 내용', isFoldPost: false },
+        { id: 1, title: '2', description: '2번의 내용', isFoldPost: false },
+        { id: 2, title: '3', description: '3번의 내용', isFoldPost: false },
+      ]);
+    } else {
+      setPostitValues(JSON.parse(localStorage.getItem('noteList') as string));
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem('noteList', JSON.stringify(postitValues));
   }, [postitValues]);
 
