@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Note from './Note';
+import DeleteModal from '../Modal/DeleteModal';
 import { addPost } from '../modules/eventHandler';
 import { PostitValues } from '../models/postModel';
-import DeleteModal from '../Modal/DeleteModal';
 interface NoteListProps {
   noteList: PostitValues[];
   setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>;
