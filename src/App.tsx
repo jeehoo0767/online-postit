@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import NoteList from './components/Note/NoteList';
@@ -29,6 +29,10 @@ const App: React.FC = () => {
       addPost(postitValues, setPostitValues);
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem('noteList', JSON.stringify(postitValues));
+  }, [postitValues]);
 
   return (
     <Container className="mt-5">
