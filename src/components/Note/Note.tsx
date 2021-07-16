@@ -1,12 +1,19 @@
 import React from 'react';
-import { handleChange, deleteNote } from '../modules/eventHandler';
+import { handleChange } from '../modules/eventHandler';
 import { PostitValues } from '../models/postModel';
 interface NoteListProps {
   noteList: PostitValues[];
   setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>;
+  handleShow: () => void;
+  setClickedPost: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
-const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListProps) => {
+const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, setClickedPost }: NoteListProps) => {
+  const handleDeleteClick = (idParams: number) => {
+    handleShow();
+    setClickedPost(idParams);
+  };
+
   /**
    * 포스트잇을 map함수를 이용하여 순회한다
    * @param noteItemPrams {PostitValues[]} map으로 순회하며 화면에 보여줄 내용을 가진 state 배열
@@ -35,7 +42,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListPr
             style={{ border: 'none', borderTop: '1px solid black' }}
           />
           <span className="note_reduce">-</span>
-          <span className="note_delete" onClick={() => deleteNote(noteList, item.id, setPostitValues)}>
+          <span className="note_delete" onClick={() => handleDeleteClick(item.id)}>
             X
           </span>
         </li>

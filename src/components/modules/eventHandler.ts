@@ -48,15 +48,3 @@ export const addPost = (noteItems: PostitValues[], setPostitValues: React.Dispat
   // 마지막 인덱스의 id에서 1을 더한 값으로 state를 추가
   setPostitValues(nextPost);
 };
-
-/**
- *
- */
-export const deleteNote = (
-  noteList: PostitValues[],
-  idParams: number,
-  setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>,
-) => {
-  const nextItems = noteList.filter((item) => item.id !== idParams);
-  setPostitValues(nextItems);
-};
