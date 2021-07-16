@@ -1,11 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { handleChange, addPost } from './modules/eventHandler';
-interface PostitValues {
-  id: number;
-  title: string;
-  description: string;
-}
+import { PostitValues } from '../components/models/postModel';
 
 interface NoteTitleProps {
   noteTitle: PostitValues[];

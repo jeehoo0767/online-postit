@@ -8,9 +8,9 @@ import { addPost } from './components/modules/eventHandler';
 
 const App: React.FC = () => {
   const [postitValues, setPostitValues] = useState<PostitValues[]>([
-    { id: 0, title: '1', description: '1번의 내용' },
-    { id: 1, title: '2', description: '2번의 내용' },
-    { id: 2, title: '3', description: '3번의 내용' },
+    { id: 0, title: '1', description: '1번의 내용', isFoldPost: false },
+    { id: 1, title: '2', description: '2번의 내용', isFoldPost: false },
+    { id: 2, title: '3', description: '3번의 내용', isFoldPost: false },
   ]);
 
   let isCtrl: boolean = false;

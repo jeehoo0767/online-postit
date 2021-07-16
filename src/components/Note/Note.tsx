@@ -1,5 +1,5 @@
 import React from 'react';
-import { handleChange } from '../modules/eventHandler';
+import { handleChange, deleteNote } from '../modules/eventHandler';
 import { PostitValues } from '../models/postModel';
 interface NoteListProps {
   noteList: PostitValues[];
@@ -9,9 +9,13 @@ interface NoteListProps {
 }
 
 const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, setClickedPost }: NoteListProps) => {
-  const handleDeleteClick = (idParams: number) => {
+  const handleDeleteClick = (selectedPost: PostitValues) => {
+    if (!selectedPost.description) {
+      deleteNote(selectedPost.id, noteList, setPostitValues);
+      return;
+    }
     handleShow();
-    setClickedPost(idParams);
+    setClickedPost(selectedPost.id);
   };
 
   /**
@@ -42,7 +46,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
             style={{ border: 'none', borderTop: '1px solid black' }}
           />
           <span className="note_reduce">-</span>
-          <span className="note_delete" onClick={() => handleDeleteClick(item.id)}>
+          <span className="note_delete" onClick={() => handleDeleteClick(item)}>
             X
           </span>
         </li>

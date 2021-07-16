@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { PostitValues } from '../models/postModel';
+import { deleteNote } from '../modules/eventHandler';
 interface DeleteModalProps {
   show: boolean;
   handleClose: () => void;
@@ -10,15 +11,6 @@ interface DeleteModalProps {
 }
 
 const DeleteModal: React.FC<DeleteModalProps> = ({ show, handleClose, noteList, setPostitValues, clickedPost }) => {
-  /**
-   *
-   */
-  const deleteNote = (idParams: number | undefined) => {
-    const nextItems = noteList.filter((item) => item.id !== idParams);
-    setPostitValues(nextItems);
-    handleClose();
-  };
-
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -30,7 +22,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ show, handleClose, noteList, 
           <Button variant="secondary" onClick={handleClose}>
             취소
           </Button>
-          <Button variant="primary" onClick={() => deleteNote(clickedPost)}>
+          <Button variant="primary" onClick={() => deleteNote(clickedPost, noteList, setPostitValues, handleClose)}>
             확인
           </Button>
         </Modal.Footer>
