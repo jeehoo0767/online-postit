@@ -1,11 +1,6 @@
 import React from 'react';
-import { handleChange } from '../modules/eventHandler';
-interface PostitValues {
-  id: number;
-  title: string;
-  description: string;
-}
-
+import { handleChange, deleteNote } from '../modules/eventHandler';
+import { PostitValues } from '../models/postModel';
 interface NoteListProps {
   noteList: PostitValues[];
   setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>;
@@ -40,7 +35,9 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListPr
             style={{ border: 'none', borderTop: '1px solid black' }}
           />
           <span className="note_reduce">-</span>
-          <span className="note_delete">X</span>
+          <span className="note_delete" onClick={() => deleteNote(noteList, item.id, setPostitValues)}>
+            X
+          </span>
         </li>
       );
     });

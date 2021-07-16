@@ -33,12 +33,30 @@ export const handleChange = (
 };
 
 /**
- * @포스트잇 포스트잇 항목을 추가한다
+ * 포스트잇 항목을 추가한다
  * @param noteItems {PostitValues[]} nextState를 복사 할 기존 state
  * @param setPostitValues{React.Dispatch<React.SetStateAction<PostitValues[]>>} postit setState함수
  */
 export const addPost = (noteItems: PostitValues[], setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>) => {
   const nextPost = [...noteItems];
-  nextPost.push({ id: noteItems[noteItems.length - 1].id + 1, title: '', description: '' });
+  if (nextPost.length === 0) {
+    nextPost.push({ id: 0, title: '', description: '' });
+  } else {
+    nextPost.push({ id: noteItems[noteItems.length - 1].id + 1, title: '', description: '' });
+  }
+  // 복사 할 state가 없다면 id를 0부터 추가하고 아니면
+  // 마지막 인덱스의 id에서 1을 더한 값으로 state를 추가
   setPostitValues(nextPost);
+};
+
+/**
+ *
+ */
+export const deleteNote = (
+  noteList: PostitValues[],
+  idParams: number,
+  setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>,
+) => {
+  const nextItems = noteList.filter((item) => item.id !== idParams);
+  setPostitValues(nextItems);
 };

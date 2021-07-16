@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { handleChange } from './modules/eventHandler';
+import { handleChange, addPost } from './modules/eventHandler';
 interface PostitValues {
   id: number;
   title: string;
@@ -38,17 +38,12 @@ const Header: React.FC<NoteTitleProps> = ({ noteTitle, setPostitValues }) => {
    * @포스트잇 포스트잇 항목을 추가한다
    * @param noteItems {PostitValues[]} nextState를 복사 할 기존 state
    */
-  const addPost = (noteItems: PostitValues[]) => {
-    const nextPost = [...noteItems];
-    nextPost.push({ id: noteItems[noteItems.length - 1].id + 1, title: '', description: '' });
-    setPostitValues(nextPost);
-  };
 
   return (
     <div className="header">
       {renderNoteTitle(noteTitle)}
       <div className="text-center">
-        <Button onClick={() => addPost(noteTitle)}>+</Button>
+        <Button onClick={() => addPost(noteTitle, setPostitValues)}>+</Button>
       </div>
     </div>
   );

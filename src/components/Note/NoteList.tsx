@@ -1,13 +1,7 @@
 import React from 'react';
 import Note from './Note';
 import { addPost } from '../modules/eventHandler';
-
-interface PostitValues {
-  id: number;
-  title: string;
-  description: string;
-}
-
+import { PostitValues } from '../models/postModel';
 interface NoteListProps {
   noteList: PostitValues[];
   setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>;

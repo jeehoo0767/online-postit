@@ -3,12 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import NoteList from './components/Note/NoteList';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-
-interface PostitValues {
-  id: number;
-  title: string;
-  description: string;
-}
+import { PostitValues } from './components/models/postModel';
 
 const App: React.FC = () => {
   const [postitValues, setPostitValues] = useState<PostitValues[]>([
