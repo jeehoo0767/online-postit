@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import NoteList from './components/Note/NoteList';
-import { addPost } from './components/modules/eventHandler';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
 interface PostitValues {
@@ -25,7 +24,7 @@ const App: React.FC = () => {
           <Col lg="2">
             <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
           </Col>
-          <Col lg="10" onDoubleClick={() => addPost(postitValues, setPostitValues)}>
+          <Col lg="10">
             <NoteList noteList={postitValues} setPostitValues={setPostitValues} />
           </Col>
         </Row>

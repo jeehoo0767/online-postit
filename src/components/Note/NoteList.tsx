@@ -1,5 +1,6 @@
 import React from 'react';
 import Note from './Note';
+import { addPost } from '../modules/eventHandler';
 
 interface PostitValues {
   id: number;
@@ -14,7 +15,7 @@ interface NoteListProps {
 
 const NoteList: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListProps) => {
   return (
-    <div className="note-wrap">
+    <div className="note-wrap" onDoubleClick={() => addPost(noteList, setPostitValues)}>
       <ul className="notes_list">
         <Note noteList={noteList} setPostitValues={setPostitValues} />
       </ul>

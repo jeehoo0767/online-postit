@@ -38,7 +38,6 @@ export const handleChange = (
  * @param setPostitValues{React.Dispatch<React.SetStateAction<PostitValues[]>>} postit setState함수
  */
 export const addPost = (noteItems: PostitValues[], setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>) => {
-  console.log('실행됨');
   const nextPost = [...noteItems];
   nextPost.push({ id: noteItems[noteItems.length - 1].id + 1, title: '', description: '' });
   setPostitValues(nextPost);

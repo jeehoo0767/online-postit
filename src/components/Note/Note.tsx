@@ -19,7 +19,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteListPr
   const renderNotes = (noteItemPrams: PostitValues[]) => {
     const noteItems = noteItemPrams.map((item: PostitValues, index: number) => {
       return (
-        <li className="note" key={index}>
+        <li className="note" key={index} onDoubleClick={(e) => e.stopPropagation()}>
           <input
             id={index.toString()}
             name="title"
