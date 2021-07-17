@@ -131,13 +131,12 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
       console.log(item.height);
       return (
         <Rnd
-          default={{
+          position={{
             x: item.x,
             y: item.y,
-            width: item.width,
-            height: 'auto',
           }}
-          style={{ height: item.height + 'px' }}
+          size={{ width: item.width, height: item.height }}
+          // style={{ width: item.width + 'px', height: item.height + 'px' }}
           onDragStop={(e, d) => handleDrag(d, item)} // 드래그 props
           onResizeStop={(e, direction, ref, delta, position) => handleResize(e, direction, ref, delta, position, item)} // 사이즈 조절 props
           cancel=".note_description" // 타이틀 에서만 드래그가 가능하게 textarea를 cancel로 지정
