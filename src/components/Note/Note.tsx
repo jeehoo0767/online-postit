@@ -58,8 +58,6 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
     position: { x: number; y: number },
     noteItem: PostitValues,
   ) => {
-    console.log(e, direction, ref, delta, position);
-    console.log();
     const nextItems = noteList.map((item) => {
       if (noteItem.id === item.id) {
         return {
@@ -136,7 +134,8 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
             y: item.y,
           }}
           size={{ width: item.width, height: item.height }}
-          // style={{ width: item.width + 'px', height: item.height + 'px' }}
+          minWidth={200}
+          minHeight={80}
           onDragStop={(e, d) => handleDrag(d, item)} // 드래그 props
           onResizeStop={(e, direction, ref, delta, position) => handleResize(e, direction, ref, delta, position, item)} // 사이즈 조절 props
           cancel=".note_description" // 타이틀 에서만 드래그가 가능하게 textarea를 cancel로 지정
@@ -144,12 +143,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
           enableResizing={{ bottom: item.isFoldPost ? false : true, right: true, bottomRight: item.isFoldPost ? false : true }}
           key={item.id}
         >
-          <div
-            className="note resize"
-            style={{ height: item.height + 'px' }}
-            id={item.id.toString()}
-            onDoubleClick={(e) => e.stopPropagation()}
-          >
+          <div className="note resize" id={item.id.toString()} onDoubleClick={(e) => e.stopPropagation()}>
             <input
               id={item.id.toString()}
               name="title"
