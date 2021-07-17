@@ -1,15 +1,15 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
-* {
+{
   box-sizing: border-box;
-}
+} 
 
 body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-} */
-
+}
+*/
 input,
 textarea {
   outline: none;
@@ -19,6 +19,7 @@ textarea {
 .note-wrap {
   border-left: 1px solid rgba(0, 0, 0, 0.125);
   min-height: 80vh;
+  padding: 20px;
 }
 
 .header {
@@ -33,8 +34,8 @@ textarea {
   margin: 0;
 }
 .note {
-  width: 13rem;
-  margin: 10px;
+  width: 100%;
+  height: 100%;
   background-color: lightyellow;
   border: 1px solid grey;
   box-shadow: 2px 2px 3px lightgrey;
@@ -56,7 +57,7 @@ textarea {
 }
 
 .note_description {
-  height: 15rem;
+  height: 100%;
   flex-grow: 1;
   font-size: 14px;
 }
