@@ -5,5 +5,7 @@ export interface PostitValues {
   isFoldPost: boolean;
   x: number;
   y: number;
+  width: number;
+  height: number;
   isVisible: boolean;
 }
