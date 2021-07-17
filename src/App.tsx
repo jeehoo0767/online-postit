@@ -45,19 +45,34 @@ const App: React.FC = () => {
   }, [postitValues]);
 
   return (
-    <Container className="mt-5">
-      <div className="h1 text-center">Online Post-it</div>
-      <Card className="my-3" style={{ minHeight: '80vh' }}>
-        <Row>
-          <Col lg="2">
-            <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
-          </Col>
-          <Col lg="10">
-            <NoteList noteList={postitValues} setPostitValues={setPostitValues} />
-          </Col>
-        </Row>
-      </Card>
-    </Container>
+    <>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage:
+            'url(https://img.freepik.com/free-photo/abstract-and-surface-wood-texture-for-background_74190-12071.jpg?size=626&ext=jpg&ga=GA1.2.1591904653.1622073600)',
+          backgroundSize: 'cover',
+          zIndex: -1,
+        }}
+      />
+      <Container className="mt-5">
+        <div className="h1 text-center">Online Post-it</div>
+        <Card className="my-3" style={{ minHeight: '80vh', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+          <Row>
+            <Col lg="2">
+              <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
+            </Col>
+            <Col lg="10">
+              <NoteList noteList={postitValues} setPostitValues={setPostitValues} />
+            </Col>
+          </Row>
+        </Card>
+      </Container>
+    </>
   );
 };
 
