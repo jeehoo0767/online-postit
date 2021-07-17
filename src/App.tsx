@@ -7,11 +7,7 @@ import { PostitValues } from './components/models/postModel';
 import { addPost } from './components/modules/eventHandler';
 
 const App: React.FC = () => {
-  const [postitValues, setPostitValues] = useState<PostitValues[]>([
-    { id: 0, title: '1', description: '1번의 내용', isFoldPost: false },
-    { id: 1, title: '2', description: '2번의 내용', isFoldPost: false },
-    { id: 2, title: '3', description: '3번의 내용', isFoldPost: false },
-  ]);
+  const [postitValues, setPostitValues] = useState<PostitValues[]>([]);
 
   let isCtrl: boolean = false;
   let isAlt: boolean = false;
@@ -33,9 +29,9 @@ const App: React.FC = () => {
   useEffect(() => {
     if (localStorage.getItem('noteList') === null || JSON.parse(localStorage.getItem('noteList') as string).length === 0) {
       setPostitValues([
-        { id: 0, title: '1', description: '1번의 내용', isFoldPost: false },
-        { id: 1, title: '2', description: '2번의 내용', isFoldPost: false },
-        { id: 2, title: '3', description: '3번의 내용', isFoldPost: false },
+        { id: 0, title: '1', description: '1번의 내용', isFoldPost: false, x: 0, y: 0 },
+        { id: 1, title: '2', description: '2번의 내용', isFoldPost: false, x: 10, y: 10 },
+        { id: 2, title: '3', description: '3번의 내용', isFoldPost: false, x: 20, y: 20 },
       ]);
       // 로컬스토리지 에서 noteList 이름으로 get 할 아이템이 없다면
       // 해당 값으로 state 설정

@@ -3,4 +3,6 @@ export interface PostitValues {
   title: string;
   description: string;
   isFoldPost: boolean;
+  x: number;
+  y: number;
 }

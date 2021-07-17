@@ -12,6 +12,7 @@ export const handleChange = (
   noteItemsParams: PostitValues[],
   setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>,
 ) => {
+  console.log(e.target);
   const nextItems = noteItemsParams.map((item: PostitValues, index: number) => {
     if (e.target.id === index.toString()) {
       return {
@@ -35,9 +36,16 @@ export const handleChange = (
 export const addPost = (noteItems: PostitValues[], setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>) => {
   const nextPost = [...noteItems];
   if (nextPost.length === 0) {
-    nextPost.push({ id: 0, title: '', description: '', isFoldPost: false });
+    nextPost.push({ id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10 });
   } else {
-    nextPost.push({ id: noteItems[noteItems.length - 1].id + 1, title: '', description: '', isFoldPost: false });
+    nextPost.push({
+      id: noteItems[noteItems.length - 1].id + 1,
+      title: '',
+      description: '',
+      isFoldPost: false,
+      x: nextPost[nextPost.length - 1].x + 10,
+      y: nextPost[nextPost.length - 1].y + 10,
+    });
   }
   // 복사 할 state가 없다면 id를 0부터 추가하고 아니면
   // 마지막 인덱스의 id에서 1을 더한 값으로 state를 추가
