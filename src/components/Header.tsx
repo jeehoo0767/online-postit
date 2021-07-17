@@ -16,14 +16,16 @@ const Header: React.FC<NoteTitleProps> = ({ noteTitle, setPostitValues }) => {
   const renderNoteTitle = (titleParam: PostitValues[]) => {
     const titleItem = titleParam.map((item: PostitValues, index: number) => {
       return (
-        <Form.Control
-          id={index.toString()}
-          key={index}
-          className="mb-3"
-          name="title"
-          value={item.title}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e, noteTitle, setPostitValues)}
-        />
+        <>
+          <Form.Control
+            id={index.toString()}
+            key={index}
+            className="mb-3"
+            name="title"
+            value={item.title}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e, noteTitle, setPostitValues)}
+          />
+        </>
       );
     });
 

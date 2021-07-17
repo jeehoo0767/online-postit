@@ -20,12 +20,13 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
    * @returns
    */
   const handleDeleteClick = (selectedPost: PostitValues) => {
-    if (!selectedPost.description) {
+    if (!selectedPost.description || !selectedPost.title) {
       deleteNote(selectedPost.id, noteList, setPostitValues);
       return;
-    }
+    } // 제목이나 본문에 내용이 있을경우 바로 삭제
     handleShow();
     setClickedPost(selectedPost.id);
+    // 아니면 모달을 띄운다
   };
 
   /**
@@ -34,8 +35,9 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
    * @param selectedPost {PostitValues} - 버튼이 선택 된 state 배열
    */
   const handleFoldButton = (noteItemPrams: PostitValues[], selectedPost: PostitValues) => {
-    const nextItems = noteItemPrams.map((item: PostitValues, index: number) => {
-      if (selectedPost.id === index) {
+    console.log('얘도실행됨');
+    const nextItems = noteItemPrams.map((item: PostitValues) => {
+      if (selectedPost.id === item.id) {
         return {
           ...item,
           isFoldPost: !item.isFoldPost,

@@ -31,19 +31,23 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('noteList') as string).length === 0) {
+    if (localStorage.getItem('noteList') === null || JSON.parse(localStorage.getItem('noteList') as string).length === 0) {
       setPostitValues([
         { id: 0, title: '1', description: '1번의 내용', isFoldPost: false },
         { id: 1, title: '2', description: '2번의 내용', isFoldPost: false },
         { id: 2, title: '3', description: '3번의 내용', isFoldPost: false },
       ]);
+      // 로컬스토리지 에서 noteList 이름으로 get 할 아이템이 없다면
+      // 해당 값으로 state 설정
     } else {
       setPostitValues(JSON.parse(localStorage.getItem('noteList') as string));
+      // 있다면 가져온 값으로 스테이트 설정
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem('noteList', JSON.stringify(postitValues));
+    // postitValues 스테이트가 변경될 때 마다 localStorage에 아이템 업데이트
   }, [postitValues]);
 
   return (
