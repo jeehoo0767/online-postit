@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react';
 import { handleChange, deleteNote } from '../modules/eventHandler';
 import { PostitValues } from '../models/postModel';
 import styled from 'styled-components';
-import { Col } from 'react-bootstrap';
-import Draggable, { DraggableData } from 'react-draggable';
+// import { Col } from 'react-bootstrap';
+import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 
 const StyledTextArea = styled.textarea<{ isFold: boolean }>`
   display: ${(props) => (props.isFold ? 'none' : 'inline-block')};
@@ -19,8 +19,13 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
   const nodeRef = useRef(null);
   const [opacity, setOpacity] = useState(false);
 
-  const handleDrag = (e: any, data: DraggableData, noteItem: PostitValues) => {
-    // setPosition({ x: data.x, y: data.y });
+  /**
+   * 드래그함수 - state의 x, y 좌표값 설정
+   * @param e {DraggableEvent}
+   * @param data {DraggableData}
+   * @param noteItem {PostitValues}
+   */
+  const handleDrag = (e: DraggableEvent, data: DraggableData, noteItem: PostitValues) => {
     const nextItems = noteList.map((item) => {
       if (noteItem.id === item.id) {
         return {
@@ -36,25 +41,29 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
     });
     setPostitValues(nextItems);
   };
+
   const handleStart = () => {
     setOpacity(true);
   };
+
   const handleEnd = () => {
     setOpacity(false);
   };
+
   /**
    * 포스트 삭제버튼 함수 (내용이 없으면 바로 삭제)
    * @param selectedPost {PostitValues} 포스트 배열 (state)
    * @returns
    */
   const handleDeleteClick = (selectedPost: PostitValues) => {
-    if (!selectedPost.description || !selectedPost.title) {
+    if (!selectedPost.description && !selectedPost.title) {
       deleteNote(selectedPost.id, noteList, setPostitValues);
       return;
-    } // 제목이나 본문에 내용이 있을경우 바로 삭제
+    } // 제목과 본문 둘다 내용이 없으면 바로 삭제
+    // 하나라도 있으면
     handleShow();
     setClickedPost(selectedPost.id);
-    // 아니면 모달을 띄운다
+    // 모달을 띄운다
   };
 
   /**
@@ -84,7 +93,8 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
    * @param noteItemPrams {PostitValues[]} map으로 순회하며 화면에 보여줄 내용을 가진 state 배열
    */
   const renderNotes = (noteItemPrams: PostitValues[]) => {
-    const noteItems = noteItemPrams.map((item: PostitValues, index: number) => {
+    console.log('다시실행됨');
+    const noteItems = noteItemPrams.map((item: PostitValues) => {
       return (
         <Draggable
           key={item.id}
@@ -93,8 +103,10 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
           onStop={handleEnd}
           onDrag={(e, data) => handleDrag(e, data, item)}
           position={{ x: item.x, y: item.y }}
+          bounds={{ left: -25, top: -20, right: 820, bottom: 430 }} // 최대 이동거리 지정
+          cancel=".note_description" // 타이틀 에서만 드래그가 가능하게 textarea를 cancel로 지정
         >
-          <Col ref={nodeRef}>
+          <div ref={nodeRef} style={{ position: 'absolute', visibility: item.isVisible ? 'hidden' : 'visible' }}>
             <div
               className="note"
               id={item.id.toString()}
@@ -102,7 +114,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
               onDoubleClick={(e) => e.stopPropagation()}
             >
               <input
-                id={index.toString()}
+                id={item.id.toString()}
                 name="title"
                 type="text"
                 style={{ border: 'none' }}
@@ -113,7 +125,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
                 autoComplete="off"
               />
               <StyledTextArea
-                id={index.toString()}
+                id={item.id.toString()}
                 name="description"
                 value={item.description}
                 onChange={(e) => handleChange(e, noteList, setPostitValues)}
@@ -121,6 +133,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
                 className="note_description"
                 style={{ border: 'none', borderTop: '1px solid black' }}
                 isFold={item.isFoldPost}
+                onDrag={(e) => e.stopPropagation()}
               />
               <span className="note_reduce" onClick={() => handleFoldButton(noteList, item)}>
                 -
@@ -129,7 +142,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
                 X
               </span>
             </div>
-          </Col>
+          </div>
         </Draggable>
       );
     });
@@ -137,7 +150,7 @@ const Note: React.FC<NoteListProps> = ({ noteList, setPostitValues, handleShow, 
     return noteItems;
   };
 
-  return <>{renderNotes(noteList)}</>;
+  return <>{noteList && renderNotes(noteList)}</>;
 };
 
 export default Note;

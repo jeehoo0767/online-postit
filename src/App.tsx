@@ -22,17 +22,14 @@ const App: React.FC = () => {
     if (e.altKey) isAlt = true;
 
     if (e.key === 'n' && isCtrl && isAlt) {
+      console.log('실행');
       addPost(postitValues, setPostitValues);
     }
   };
 
   useEffect(() => {
     if (localStorage.getItem('noteList') === null || JSON.parse(localStorage.getItem('noteList') as string).length === 0) {
-      setPostitValues([
-        { id: 0, title: '1', description: '1번의 내용', isFoldPost: false, x: 0, y: 0 },
-        { id: 1, title: '2', description: '2번의 내용', isFoldPost: false, x: 10, y: 10 },
-        { id: 2, title: '3', description: '3번의 내용', isFoldPost: false, x: 20, y: 20 },
-      ]);
+      setPostitValues([{ id: 0, title: '1', description: '1번의 내용', isFoldPost: false, x: 0, y: 0, isVisible: false }]);
       // 로컬스토리지 에서 noteList 이름으로 get 할 아이템이 없다면
       // 해당 값으로 state 설정
     } else {

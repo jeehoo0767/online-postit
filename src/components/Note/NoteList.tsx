@@ -3,7 +3,7 @@ import Note from './Note';
 import DeleteModal from '../Modal/DeleteModal';
 import { addPost } from '../modules/eventHandler';
 import { PostitValues } from '../models/postModel';
-import { Row } from 'react-bootstrap';
+// import { Row } from 'react-bootstrap';
 interface NoteListProps {
   noteList: PostitValues[];
   setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>;
@@ -17,9 +17,9 @@ const NoteList: React.FC<NoteListProps> = ({ noteList, setPostitValues }: NoteLi
   return (
     <>
       <div className="note-wrap" onDoubleClick={() => addPost(noteList, setPostitValues)}>
-        <Row className="notes_list">
+        <div className="notes_list">
           <Note noteList={noteList} setPostitValues={setPostitValues} handleShow={handleShow} setClickedPost={setClickedPost} />
-        </Row>
+        </div>
       </div>
       {show && (
         <DeleteModal
