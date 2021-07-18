@@ -121,7 +121,16 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
           enableResizing={{ bottom: item.isFoldPost ? false : true, right: true, bottomRight: item.isFoldPost ? false : true }}
           key={item.id}
         >
-          <div className="note resize" id={item.id.toString()} onDoubleClick={(e) => e.stopPropagation()}>
+          <div
+            className="note resize"
+            id={item.id.toString()}
+            onDoubleClick={(e) => e.stopPropagation()}
+            style={{
+              background: item.isFoldPost
+                ? 'lightyellow'
+                : 'linear-gradient(-45deg, transparent 15px, lightyellow 0), linear-gradient(45deg, transparent 15px, rgb(255, 94, 0) 0)',
+            }}
+          >
             <input
               id={item.id.toString()}
               name="title"
