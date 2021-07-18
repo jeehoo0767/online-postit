@@ -3,13 +3,13 @@ import { PostitValues } from '../../components/models/postModel';
 
 interface InitialTypes {
   isLoading: boolean;
-  data: (PostitValues & Record<string, any>)[];
+  data: any; // string key로 객체에 접근하기를 실패하여 data의 type을 any로 설정
   error: any;
 }
 
 const initialState: InitialTypes = {
   isLoading: false,
-  data: [],
+  data: null,
   error: null,
 };
 
@@ -64,7 +64,7 @@ const reducers = {
   deletePost: (state = initialState, action: PayloadAction<{ id: number }>) => {
     // 포스트 삭제 액션
     const findKey = action.payload.id; // 전달받은 id
-    state.data = state.data.filter((item) => item.id !== findKey); // 전달받은 아이디와 같지 않은것들만 state로 설정
+    state.data = state.data.filter((item: PostitValues) => item.id !== findKey); // 전달받은 아이디와 같지 않은것들만 state로 설정
   },
   handleDragPost: (state = initialState, action: PayloadAction<{ id: number; x: number; y: number }>) => {
     // 포스트 드래그 액션

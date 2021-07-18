@@ -59,6 +59,7 @@ const App: React.FC = () => {
         {getPostLoading && (
           <div className="text-center">
             <Spinner animation="border" variant="primary" />
+            <div className="h4">잠시만 기다려 주세요 ...</div>
           </div>
         )}
         {getPostData && (

@@ -1,10 +1,11 @@
 export const api = {
   getPostList() {
     return new Promise((resolve) => {
-      if (JSON.parse(localStorage.getItem('noteList') as string)) {
-        resolve(JSON.parse(localStorage.getItem('noteList') as string));
-      } else {
-        resolve([]);
+      if ((localStorage.getItem('noteList') as string) === '[]' || localStorage.getItem('noteList') === null) {
+        return resolve([{ description: '', height: 250, id: 0, isFoldPost: false, isVisible: false, title: '', width: 250, x: 10, y: 10 }]);
+      }
+      if (localStorage.getItem('noteList')) {
+        return resolve(JSON.parse(localStorage.getItem('noteList') as string));
       }
     });
   },
