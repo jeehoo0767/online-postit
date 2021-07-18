@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import NoteList from './components/Note/NoteList';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { PostitValues } from './components/models/postModel';
-import { addPost } from './components/modules/eventHandler';
+import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from './store/index'; // state의 타입 ( useSelector로 접근 시 타입이 필요 )
+import { postListActions } from './store/feature/postSlice'; // postReducer 액션 모음
 
 const App: React.FC = () => {
-  const [postitValues, setPostitValues] = useState<PostitValues[]>([]);
+  const dispatch = useDispatch();
+  const { isLoading: getPostLoading, data: getPostData, error: getPostError } = useSelector((state: RootState) => state.postListReducer);
 
   let isCtrl: boolean = false;
   let isAlt: boolean = false;
@@ -22,27 +24,21 @@ const App: React.FC = () => {
     if (e.altKey) isAlt = true;
 
     if (e.key === 'n' && isCtrl && isAlt) {
-      addPost(postitValues, setPostitValues);
+      dispatch(postListActions.addPost());
     }
-  };
+  }; // ctrl + alt + n 단축키를 누를 시 포스트를 생성하는 함수
 
   useEffect(() => {
-    if (localStorage.getItem('noteList') === null || JSON.parse(localStorage.getItem('noteList') as string).length === 0) {
-      setPostitValues([
-        { id: 0, title: '1', description: '1번의 내용', isFoldPost: false, x: 0, y: 0, isVisible: false, width: 250, height: 250 },
-      ]);
-      // 로컬스토리지 에서 noteList 이름으로 get 할 아이템이 없다면
-      // 해당 값으로 state 설정
-    } else {
-      setPostitValues(JSON.parse(localStorage.getItem('noteList') as string));
-      // 있다면 가져온 값으로 스테이트 설정
-    }
+    dispatch(postListActions.loadPost());
+    // 디드마운트 시 loadPost 함수를 디스패치 하면서 saga를 실행
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('noteList', JSON.stringify(postitValues));
-    // postitValues 스테이트가 변경될 때 마다 localStorage에 아이템 업데이트
-  }, [postitValues]);
+    localStorage.setItem('noteList', JSON.stringify(getPostData));
+    // store의 postData가 업데이트 될 때 마다 스토리이지에 noteList 이름으로 item을 저장
+    // didmount 단게에서 loadPost 디스패치 시 아이템이 null 이라면 빈 배열을 리턴 받아서 store에 업데이트가 되고 그 값이 이 함수 안에서
+    // storage에 저장되는 구조
+  }, [getPostData]);
 
   return (
     <>
@@ -60,17 +56,27 @@ const App: React.FC = () => {
         }}
       />
       <Container className="mt-5">
-        <div className="h1 text-center">Online Post-it</div>
-        <Card className="my-3" style={{ minHeight: '80vh', backgroundColor: 'rgba(255,255,255,0.2)' }}>
-          <Row>
-            <Col lg="2">
-              <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
-            </Col>
-            <Col lg="10">
-              <NoteList noteList={postitValues} setPostitValues={setPostitValues} />
-            </Col>
-          </Row>
-        </Card>
+        {getPostLoading && (
+          <div className="text-center">
+            <Spinner animation="border" variant="primary" />
+          </div>
+        )}
+        {getPostData && (
+          <>
+            <div className="h1 text-center">Online Post-it</div>
+            <Card className="my-3" style={{ minHeight: '80vh', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+              <Row>
+                <Col lg="2">
+                  <Header />
+                </Col>
+                <Col lg="10">
+                  <NoteList />
+                </Col>
+              </Row>
+            </Card>
+          </>
+        )}
+        {getPostError && <div className="text-center">에러 발생</div>}
       </Container>
     </>
   );

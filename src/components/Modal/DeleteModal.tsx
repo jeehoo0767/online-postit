@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import { PostitValues } from '../models/postModel';
-import { deleteNote } from '../modules/eventHandler';
+import { useDispatch } from 'react-redux';
+import { postListActions } from '../../store/feature/postSlice';
 
 /**
  * show: 모달 상태 state
@@ -13,12 +13,15 @@ import { deleteNote } from '../modules/eventHandler';
 interface DeleteModalProps {
   show: boolean;
   handleClose: () => void;
-  noteList: PostitValues[];
-  setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>;
   clickedPost: number | undefined;
 }
 
-const DeleteModal: React.FC<DeleteModalProps> = ({ show, handleClose, noteList, setPostitValues, clickedPost }) => {
+const DeleteModal: React.FC<DeleteModalProps> = ({ show, handleClose, clickedPost }) => {
+  const dispatch = useDispatch();
+  const handleConFirmButton = () => {
+    handleClose();
+    dispatch(postListActions.deletePost({ id: clickedPost as number }));
+  };
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -30,7 +33,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ show, handleClose, noteList, 
           <Button variant="secondary" onClick={handleClose}>
             취소
           </Button>
-          <Button variant="primary" onClick={() => deleteNote(clickedPost, noteList, setPostitValues, handleClose)}>
+          <Button variant="primary" onClick={() => handleConFirmButton()}>
             확인
           </Button>
         </Modal.Footer>
