@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import NoteList from './components/Note/NoteList';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 import { PostitValues } from './components/models/postModel';
 import { addPost } from './components/modules/eventHandler';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from './store/index';
+import { postListActions } from './store/feature/postSlice';
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
+  const { isLoading: getPostLoading, data: getPostData, error: getPostError } = useSelector((state: RootState) => state.postListReducer);
+
   const [postitValues, setPostitValues] = useState<PostitValues[]>([]);
 
   let isCtrl: boolean = false;
@@ -37,6 +43,7 @@ const App: React.FC = () => {
       setPostitValues(JSON.parse(localStorage.getItem('noteList') as string));
       // 있다면 가져온 값으로 스테이트 설정
     }
+    dispatch(postListActions.load());
   }, []);
 
   useEffect(() => {
@@ -60,17 +67,27 @@ const App: React.FC = () => {
         }}
       />
       <Container className="mt-5">
-        <div className="h1 text-center">Online Post-it</div>
-        <Card className="my-3" style={{ minHeight: '80vh', backgroundColor: 'rgba(255,255,255,0.2)' }}>
-          <Row>
-            <Col lg="2">
-              <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
-            </Col>
-            <Col lg="10">
-              <NoteList noteList={postitValues} setPostitValues={setPostitValues} />
-            </Col>
-          </Row>
-        </Card>
+        {getPostLoading && (
+          <div className="text-center">
+            <Spinner animation="border" variant="primary" />
+          </div>
+        )}
+        {getPostData && (
+          <>
+            <div className="h1 text-center">Online Post-it</div>
+            <Card className="my-3" style={{ minHeight: '80vh', backgroundColor: 'rgba(255,255,255,0.2)' }}>
+              <Row>
+                <Col lg="2">
+                  <Header noteTitle={postitValues} setPostitValues={setPostitValues} />
+                </Col>
+                <Col lg="10">
+                  <NoteList noteList={postitValues} setPostitValues={setPostitValues} />
+                </Col>
+              </Row>
+            </Card>
+          </>
+        )}
+        {getPostError && <div className="text-center">에러 발생</div>}
       </Container>
     </>
   );
