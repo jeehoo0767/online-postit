@@ -37,6 +37,7 @@ const Header: React.FC = () => {
             value={item.title}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
             style={{ display: item.isVisible ? 'none' : 'inline' }}
+            autoComplete="off"
           />
         </div>
       );

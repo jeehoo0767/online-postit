@@ -124,7 +124,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
           <div
             className="note resize"
             id={item.id.toString()}
-            onDoubleClick={(e) => e.stopPropagation()}
+            onDoubleClick={(e) => e.stopPropagation()} // 더블클릭 이벤트 캡쳐링 방지를 위한 함수
             style={{
               background: item.isFoldPost
                 ? 'lightyellow'
