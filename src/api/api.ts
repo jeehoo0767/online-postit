@@ -1,11 +1,19 @@
 export const api = {
   getPostList() {
     return new Promise((resolve) => {
-      if ((localStorage.getItem('noteList') as string) === '[]' || localStorage.getItem('noteList') === 'null') {
-        return resolve(setPostItems());
+      if (
+        (localStorage.getItem('noteList') as string) === '[]' ||
+        localStorage.getItem('noteList') === 'null' ||
+        localStorage.getItem('noteList') === null
+      ) {
+        return setTimeout(() => {
+          return resolve(setPostItems());
+        }, 400);
       }
       if (localStorage.getItem('noteList')) {
-        return resolve(getLocalStorageItem());
+        return setTimeout(() => {
+          return resolve(getLocalStorageItem());
+        }, 400);
       }
     });
   },

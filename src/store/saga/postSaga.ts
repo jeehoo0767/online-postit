@@ -1,4 +1,4 @@
-import { call, put, takeLatest, delay } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { api } from '../../api/api';
 import { postListActions } from '../feature/postSlice';
 
@@ -7,7 +7,6 @@ function* workerPostList(): Generator<any, any, any> {
 
   try {
     const postList = yield call(api.getPostList);
-    yield delay(400); //  비동기로 받아오는 모션처럼
     yield put(loadPostSuccess(postList));
   } catch (err) {
     yield put(loadPostFail(err));

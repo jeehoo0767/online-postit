@@ -9,3 +9,4 @@ export interface PostitValues {
   height: number;
   isVisible: boolean;
 }
+// 포스트 상태의 타입을 정의 해 놓은곳

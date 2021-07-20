@@ -5,19 +5,24 @@ interface InitialTypes {
   isLoading: boolean;
   data: any; // string key로 객체에 접근하기를 실패하여 data의 type을 any로 설정
   error: any;
+  selectedPostIdForFocus: number | null;
 }
 
 const initialState: InitialTypes = {
   isLoading: false,
   data: null,
   error: null,
+  selectedPostIdForFocus: null,
 };
+
+const defaultPostData = { id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10, width: 250, height: 250, isVisible: false };
 
 const reducers = {
   loadPost: (state = initialState) => {
     state.isLoading = true;
   },
   loadPostSuccess: (state = initialState, { payload: postList }: { payload: PostitValues[] }) => {
+    console.log(postList);
     state.isLoading = false;
     state.data = postList;
     state.error = null;
@@ -44,7 +49,7 @@ const reducers = {
   addPost: (state = initialState) => {
     // 포스트 추가 액션
     if (state.data.length === 0) {
-      state.data.push({ id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10, width: 250, height: 250, isVisible: false });
+      state.data.push(defaultPostData);
       // 만약 addPost가 dispatch 시 데이터가 없다면 id를 0부터 추가
     } else {
       // 아니라면 데이터의 마지막 인덱스에 id에 1을 더한값으로 추가
@@ -71,16 +76,16 @@ const reducers = {
     const findKey = action.payload.id; // 전달받은 id
     const selectedItemIndex = state.data.findIndex((item: PostitValues) => item.id === findKey); // 전달받은 id와 data에서 일치하는 객체의 인덱스
     const selectedPost = state.data[selectedItemIndex]; // data에서 해당 인덱스의 원소
-    selectedPost.x = action.payload.x;
-    selectedPost.y = action.payload.y;
+    selectedPost.x = action.payload.x; // x좌표값 설정
+    selectedPost.y = action.payload.y; // y좌표값 설정
   },
   handleResizePost: (state = initialState, action: PayloadAction<{ id: number; width: number; height: number }>) => {
     // 포스트 리사이즈 액션
     const findKey = action.payload.id; // 전달받은 id
     const selectedItemIndex = state.data.findIndex((item: PostitValues) => item.id === findKey);
     const selectedPost = state.data[selectedItemIndex];
-    selectedPost.width = action.payload.width;
-    selectedPost.height = action.payload.height;
+    selectedPost.width = action.payload.width; // width설정
+    selectedPost.height = action.payload.height; // height 설정
   },
   handleFoldPost: (state = initialState, action: PayloadAction<{ id: number }>) => {
     // 포스트 접기 액션
@@ -88,10 +93,15 @@ const reducers = {
     const selectedItemIndex = state.data.findIndex((item: PostitValues) => item.id === findKey);
     const selectedPost = state.data[selectedItemIndex];
     if (selectedPost.isFoldPost) {
-      (selectedPost.isFoldPost = false), (selectedPost.height = 250);
+      // 만약 접혀있던 상태라면
+      (selectedPost.isFoldPost = false), (selectedPost.height = 250); // 높이를 250으로 설정
     } else {
-      (selectedPost.isFoldPost = true), (selectedPost.height = 40);
+      // 만약 펼쳐진 상태 였다면
+      (selectedPost.isFoldPost = true), (selectedPost.height = 40); // 높이를 40으로 설정
     }
+  },
+  setFocus: (state = initialState, action: PayloadAction<{ id: number }>) => {
+    state.selectedPostIdForFocus = action.payload.id; // 포커스 할 id
   },
 };
 

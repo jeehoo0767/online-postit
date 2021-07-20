@@ -129,7 +129,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
               background: item.isFoldPost
                 ? 'lightyellow'
                 : 'linear-gradient(-45deg, transparent 15px, lightyellow 0), linear-gradient(45deg, transparent 15px, rgb(255, 94, 0) 0)',
-            }}
+            }} // 모서리 주황색
           >
             <input
               id={item.id.toString()}
