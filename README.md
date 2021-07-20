@@ -23,19 +23,19 @@
 >- 데이터를 저장하는 방식은 localStorage를 저장소로 쓰며 Redux-saga를 사용하였습니다.
 
 # 🚀 Usage
->- 프로젝트 클론
+>- **프로젝트 클론**
 >```
 >git clnoe https://github.com/jeehoo0767/pre-task.git
 >```
->- 브랜치 체크아웃
+>- **브랜치 체크아웃**
 >```
->git checkout "branch_name"
+>git checkout "branch_name" // master 브랜치에서 다음 과정으로 넘어가도 됨
 >```
->- 노드 패키지 설치
+>- **노드 패키지 설치**
 >```
 >npm install or yarn install
 >```
->- 프로젝트 run server
+>- **프로젝트 시작**
 >```
 >npm start or yarn start
 >```
