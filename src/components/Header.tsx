@@ -31,7 +31,7 @@ const Header: React.FC = () => {
       return (
         <div key={index}>
           <Form.Control
-            id={index.toString()}
+            id={item.id.toString()}
             className="mb-3"
             name="title"
             value={item.title}
