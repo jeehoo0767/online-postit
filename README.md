@@ -97,5 +97,12 @@
 >효율적인 비동기 처리를 위한 redux middleware (본 프로젝트에 첫 사용경험)\
 >doc: [https://redux-saga.js.org/](https://redux-saga.js.org/)
 
-# 
+# 💛참고문서 & 글
+>- [https://kimyang-sun.tistory.com/entry/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%A6%AC%EB%8D%95%EC%8A%A4-%ED%88%B4%ED%82%B7-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%82%AC%EA%B0%80-React-Redux-Toolkit-Redux-Saga-TypeScript-Nextjs](https://kimyang-sun.tistory.com/entry/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%A6%AC%EB%8D%95%EC%8A%A4-%ED%88%B4%ED%82%B7-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%82%AC%EA%B0%80-React-Redux-Toolkit-Redux-Saga-TypeScript-Nextjs) - redux-saga & typescript(블로그)
+>- [https://codesandbox.io/s/o5jpl8z7z](https://codesandbox.io/s/o5jpl8z7z) - react-rnd
+>- [https://www.npmjs.com/package/react-rnd](https://www.npmjs.com/package/react-rnd) - react-rnd
+>- [https://react.vlpt.us/redux-middleware/10-redux-saga.html](https://react.vlpt.us/redux-middleware/10-redux-saga.html) - redux-saga(벨로퍼트님 블로그)
+>- [https://redux-toolkit.js.org/introduction/getting-started](https://redux-toolkit.js.org/introduction/getting-started) - redux-toolkit 공식문서
+>- [https://redux-saga.js.org/](https://redux-saga.js.org/) - redux-saga 공식문서
+>- [https://react-bootstrap.github.io/](https://react-bootstrap.github.io/) - react-bootstrap 공식문서
 
