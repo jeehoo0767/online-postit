@@ -34,7 +34,7 @@ export const handleChange = (
 export const addPost = (noteItems: PostitValues[], setPostitValues: React.Dispatch<React.SetStateAction<PostitValues[]>>) => {
   const nextPost = [...noteItems];
   if (nextPost.length === 0) {
-    nextPost.push({ id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10, isVisible: false, width: 250, height: 250 });
+    nextPost.push({ id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10, width: 250, height: 250 });
   } else {
     nextPost.push({
       id: noteItems[noteItems.length - 1].id + 1,
@@ -45,7 +45,6 @@ export const addPost = (noteItems: PostitValues[], setPostitValues: React.Dispat
       y: 0,
       width: 250,
       height: 250,
-      isVisible: false,
     });
   }
   // 복사 할 state가 없다면 id를 0부터 추가하고 만약 state가 있다면
@@ -67,18 +66,6 @@ export const deleteNote = (
   handleClose?: () => void | undefined,
 ) => {
   const nextItems = noteItems.filter((item) => item.id !== idParams);
-  // const nextItems = noteItems.map((item) => {
-  //   if (item.id === idParams) {
-  //     return {
-  //       ...item,
-  //       isVisible: true,
-  //     };
-  //   } else {
-  //     return {
-  //       ...item,
-  //     };
-  //   }
-  // }); // 클릭된 포스트의 isVisible을 true로 설정
   setPostitValues(nextItems);
   handleClose && handleClose();
 };

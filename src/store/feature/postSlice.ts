@@ -18,7 +18,7 @@ const initialState: InitialTypes = {
   selectedTitleForEffect: null,
 };
 
-const defaultPostData = { id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10, width: 250, height: 250, isVisible: false };
+const defaultPostData = { id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10, width: 250, height: 250 };
 
 const reducers = {
   loadPost: (state = initialState) => {
@@ -64,7 +64,6 @@ const reducers = {
         y: getRandomLocation(0, 400), // 랜덤한 y 좌표
         width: 250,
         height: 250,
-        isVisible: false,
       });
     }
   },

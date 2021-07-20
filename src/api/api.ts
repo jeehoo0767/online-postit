@@ -25,5 +25,5 @@ const getLocalStorageItem = () => {
 };
 
 const setPostItems = () => {
-  return [{ description: '', height: 250, id: 0, isFoldPost: false, isVisible: false, title: '', width: 250, x: 10, y: 10 }];
+  return [{ description: '', height: 250, id: 0, isFoldPost: false, title: '', width: 250, x: 10, y: 10 }];
 };
