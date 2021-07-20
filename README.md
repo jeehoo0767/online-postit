@@ -1,4 +1,3 @@
-![image](https://user-images.githubusercontent.com/66991772/126368052-de7a324b-1c52-481d-a59a-73b01d99054a.png)
 # ✨Welcom to Online-Postit
 >온라인에서 작성 가능한 포스트잇 프로젝트 입니다\
 >문의메일: [jeehoo0767@naver.com](jeehoo0767@naver.com)\
@@ -9,6 +8,10 @@
 >    - **feture/drag** react-draggable -> react-rnd 라이브러리를 사용한 드래그 테스트 브랜치
 >    - **feature/test/react-dnd** react-dnd를 사용한 드래그 테스트 브랜치(최종 버전에선 사용하지 않음)
 >    - **feture/test/redux-saga** 리덕스 사가, 툴킷 적용 테스트를 위한 브랜치
+
+# 👍Preview
+![녹화_2021_07_21_02_28_13_417](https://user-images.githubusercontent.com/66991772/126369164-f14a22bd-9121-4092-9880-285f06c541a3.gif)
+
 
 # ✔구현 기능
 >- 레이아웃은 좌측의 보드목록, 우측의 보드로 구성됩니다
@@ -94,4 +97,5 @@
 >효율적인 비동기 처리를 위한 redux middleware (본 프로젝트에 첫 사용경험)\
 >doc: [https://redux-saga.js.org/](https://redux-saga.js.org/)
 
+# 
 
