@@ -22,7 +22,6 @@ const reducers = {
     state.isLoading = true;
   },
   loadPostSuccess: (state = initialState, { payload: postList }: { payload: PostitValues[] }) => {
-    console.log(postList);
     state.isLoading = false;
     state.data = postList;
     state.error = null;
