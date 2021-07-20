@@ -55,7 +55,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
 
   /**
    * 포스트 리사이즈 함수
-   * @param e {any} e.target.offset 을 가져오기 위해 any로 설정 (eslint any 옵션을 끔)
+   * @param e {MouseEvent | TouchEvent}
    * @param direction {ResizeDirection} 리사이즈 시간 조절
    * @param ref {HTMLElement} 이벤트가 일어난 엘리먼트
    * @param delta {ResizableDelta}
@@ -63,7 +63,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
    * @param noteItem {PostitValues} 이벤트가 일어난 아이템의 상태(state)
    */
   const handleResizePost = (
-    e: any,
+    e: MouseEvent | TouchEvent,
     direction: ResizeDirection,
     ref: HTMLElement,
     delta: ResizableDelta,
@@ -127,7 +127,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
           onResizeStop={(e, direction, ref, delta, position) => handleResizePost(e, direction, ref, delta, position, item)} // 사이즈 조절 props
           cancel=".note_description" // 타이틀 에서만 드래그가 가능하게 textarea를 cancel로 지정
           bounds=".drag_wrap" // 해당 영역 안에서만 움직임 가능
-          enableResizing={{ bottom: item.isFoldPost ? false : true, right: true, bottomRight: item.isFoldPost ? false : true }}
+          enableResizing={{ bottom: item.isFoldPost ? false : true, right: true, bottomRight: item.isFoldPost ? false : true }} // 사이즈 조정이 가능한 방향
           key={item.id}
         >
           <div
