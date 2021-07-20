@@ -44,7 +44,7 @@
 ![image](https://user-images.githubusercontent.com/66991772/126349724-7dceacae-f7b8-486f-88f7-be542433d1c2.png)
 - **api**: saga에서 요청 할 fakeAPI가 있는 디렉토리 (localStoreage에서 아이템을 get -> Promise로 리턴)
 - **backup**: hook 상태관리 버전에서 사용했던 eventHandler 함수 모듈
-- **components"": 페이지에 그려질 컴포넌트
+- **components**: 페이지에 그려질 컴포넌트
 - **Modal**: 삭제 요청 시 확인 요청을 받는 모달이 있는 디렉토리
 - **Note**: 실제 포스트를 그릴 컴포넌트가 있는 디렉토리 이며 NoteList 컴포넌트 안에서 각 포스트를 렌더링 한다
 - **Note/Header**: 좌측 포스트의 제목 목록을 렌더링 하는 컴포넌트
