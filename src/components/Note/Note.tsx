@@ -1,5 +1,5 @@
 import React from 'react';
-import { PostitValues } from '../models/postModel';
+import { PostitValues } from '../../models/postModel';
 import styled from 'styled-components';
 import { Rnd, DraggableData, ResizableDelta } from 'react-rnd';
 import { ResizeDirection } from 're-resizable';

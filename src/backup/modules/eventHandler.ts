@@ -1,5 +1,5 @@
 import React from 'react';
-import { PostitValues } from '../../components/models/postModel';
+import { PostitValues } from '../../models/postModel';
 /**
  * 우측 목록의 title과 postit의 title, description(내용) 을 수정하는 함수
  * @param e {React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>} HTML event 객체

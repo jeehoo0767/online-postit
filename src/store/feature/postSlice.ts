@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PostitValues } from '../../components/models/postModel';
+import { PostitValues } from '../../models/postModel';
 
 interface InitialTypes {
   isLoading: boolean;

@@ -35,6 +35,15 @@ textarea {
   min-height: 80vh;
 }
 
+.header-post-title-list {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  min-height: 42px;
+  font-weight: 700;
+}
+
 .drag_wrap {
   border-left: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -43,6 +52,7 @@ textarea {
   padding: 20px;
   margin: 0;
 }
+
 .note {
   width: 100%;
   height: 100%;
@@ -54,6 +64,7 @@ textarea {
   flex-direction: column;
   position: relative;
 }
+
 .note_title,
 .note_description {
   width: 100%;
