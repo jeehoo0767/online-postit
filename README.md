@@ -45,21 +45,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## 리액트와 NODEJS를 활용한 MovieApp
-
-Thank you for having interest in this repository ! 
-
-To use this application, 
-
-
-## "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-  }
-
 ## Libary && MiddleWare
+---
 - react-bootstrap
 스타일링을 위해 react-bootstrap 사용  
 doc: [https://react-bootstrap.github.io/]  
@@ -78,10 +65,11 @@ doc: [https://styled-components.com/]
 doc: [https://redux-toolkit.js.org/]  
 
 - redux  
-전역 상태관리를 위해 사용
+전역 상태관리를 위해 사용  
 doc: [https://ko.redux.js.org/introduction/getting-started/]  
 
 - redux-saga
 효율적인 비동기 처리를 위한 redux middleware (본 프로젝트에 처음 사용경험)  
 doc: [https://redux-saga.js.org/]  
+[x]
 
