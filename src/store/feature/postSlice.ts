@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PostitValues } from '../../models/postModel';
+import { getRandomLocation } from '../../utils/randomNumber';
 
 interface InitialTypes {
   isLoading: boolean;
@@ -59,8 +60,8 @@ const reducers = {
         title: '',
         description: '',
         isFoldPost: false,
-        x: 200,
-        y: 0,
+        x: getRandomLocation(0, 700), // 랜덤한 x 좌표
+        y: getRandomLocation(0, 400), // 랜덤한 y 좌표
         width: 250,
         height: 250,
         isVisible: false,

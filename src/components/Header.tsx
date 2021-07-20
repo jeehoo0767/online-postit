@@ -35,12 +35,18 @@ const Header: React.FC = () => {
    * @포스트잇 포스트잇 항목을 추가한다
    * @param noteItems {PostitValues[]} nextState를 복사 할 기존 state
    */
+  const handleAddPostButton = () => {
+    if (getPostData.length >= 12) {
+      return alert('최대 12개까지 생성이 가능합니다');
+    }
+    dispatch(postListActions.addPost());
+  };
 
   return (
     <div className="header">
       {renderNoteTitle(getPostData)}
       <div className="text-center">
-        <Button onClick={() => dispatch(postListActions.addPost())}>+</Button>
+        <Button onClick={() => handleAddPostButton()}>+</Button>
       </div>
     </div>
   );

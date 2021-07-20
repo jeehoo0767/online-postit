@@ -29,10 +29,15 @@ const App: React.FC = () => {
     if (e.altKey) isAlt = true;
 
     if (e.key === 'n' && isCtrl && isAlt) {
-      dispatch(postListActions.addPost());
-      const titleList = document.querySelectorAll('.note_title');
-      dispatch(postListActions.setFocus({ id: Number(titleList[titleList.length - 1]?.id) }));
-      // 포스트를 단축키로 생성 시 포커스를 위해 생성 후 postList의 마지막 원소의 id를 setFocus액션에 넣어서 dispatch
+      if (getPostData.length >= 12) {
+        // 포스트 갯수는 최대 12개까지 생성 가능
+        return alert('최대 12개까지 생성이 가능합니다');
+      } else {
+        dispatch(postListActions.addPost());
+        const titleList = document.querySelectorAll('.note_title');
+        dispatch(postListActions.setFocus({ id: Number(titleList[titleList.length - 1]?.id) }));
+        // 포스트를 단축키로 생성 시 포커스를 위해 생성 후 postList의 note_title클래스를 가진 마지막 원소의 id를 setFocus액션에 넣어서 dispatch
+      }
     }
   }; // ctrl + alt + n 단축키를 누를 시 포스트를 생성하는 함수
 
