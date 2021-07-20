@@ -22,6 +22,13 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ show, handleClose, clickedPos
     handleClose();
     dispatch(postListActions.deletePost({ id: clickedPost as number }));
   };
+
+  document.onkeyup = function (e: KeyboardEvent) {
+    if (e.key === 'Enter') {
+      handleConFirmButton();
+    }
+  };
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
