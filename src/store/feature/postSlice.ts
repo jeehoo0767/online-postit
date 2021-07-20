@@ -5,7 +5,8 @@ interface InitialTypes {
   isLoading: boolean;
   data: any; // string key로 객체에 접근하기를 실패하여 data의 type을 any로 설정
   error: any;
-  selectedPostIdForFocus: number | null;
+  selectedPostIdForFocus: number | null; // 생성된 포스트 제목 포커스를 위한 상태
+  selectedTitleForEffect: number | null; // 선택된 포스트에 해당하는 header의 제목에 효과를 주기위한 상태
 }
 
 const initialState: InitialTypes = {
@@ -13,6 +14,7 @@ const initialState: InitialTypes = {
   data: null,
   error: null,
   selectedPostIdForFocus: null,
+  selectedTitleForEffect: null,
 };
 
 const defaultPostData = { id: 0, title: '', description: '', isFoldPost: false, x: 10, y: 10, width: 250, height: 250, isVisible: false };
@@ -100,7 +102,12 @@ const reducers = {
     }
   },
   setFocus: (state = initialState, action: PayloadAction<{ id: number }>) => {
+    // 생성된 포스트 제목에 포커스를 위한 액션
     state.selectedPostIdForFocus = action.payload.id; // 포커스 할 id
+  },
+  selectedTitleMakeEffect: (state = initialState, action: PayloadAction<{ id: number | null }>) => {
+    // 포스트 제목 포커스 시 우측 목록에 선택한 포스트에 대한 제목에 효과 생성을 위한 액션
+    state.selectedTitleForEffect = action.payload.id; // 선택된 제목에 효과가 들어갈 id
   },
 };
 

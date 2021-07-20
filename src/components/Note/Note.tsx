@@ -25,6 +25,12 @@ interface NoteListProps {
 const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListProps) => {
   const { data: getPostData } = useSelector((state: RootState) => state.postListReducer);
   const dispatch = useDispatch();
+
+  /**
+   *
+   * @param e {React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>}
+   * e => 이벤트가 일어난 input / textArea의 이벤트객체
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     const payload = {
       id: Number(e.target.id),
@@ -35,8 +41,8 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
   };
   /**
    * 드래그함수 - state의 x, y 좌표값 설정
-   * @param data {DraggableData} 드래그 이벤트 좌표값 객체
-   * @param noteItem {PostitValues} 이벤트가 일어난 아이템(state)
+   * @param dragData {DraggableData} 드래그 이벤트 좌표값 객체
+   * @param selectedItemsId {number} 이벤트가 일어난 아이템의 id
    */
   const handleDragPost = (dragData: DraggableData, selectedItemsId: number) => {
     const payload = {
@@ -50,6 +56,10 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
   /**
    * 포스트 리사이즈 함수
    * @param e {any} e.target.offset 을 가져오기 위해 any로 설정 (eslint any 옵션을 끔)
+   * @param direction {ResizeDirection} 리사이즈 시간 조절
+   * @param ref {HTMLElement} 이벤트가 일어난 엘리먼트
+   * @param delta {ResizableDelta}
+   * @param position { x: number; y: number } 좌표를 가진 파라미터
    * @param noteItem {PostitValues} 이벤트가 일어난 아이템의 상태(state)
    */
   const handleResizePost = (
@@ -88,13 +98,12 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
   };
 
   /**
-   * 포스트를 접는 함수
-   * @param noteItemPrams {PostitValues[]} 복제 할 state 배열
-   * @param selectedPost {PostitValues} - 버튼이 선택 된 state 배열
+   *
+   * @param selectedPostId {number} 선택된 객체의 id
    */
-  const handleFoldButton = (selectedPost: PostitValues) => {
+  const handleFoldButton = (selectedPostId: number) => {
     const paylpad = {
-      id: selectedPost.id,
+      id: selectedPostId,
     };
     dispatch(postListActions.handleFoldPost(paylpad));
   };
@@ -138,6 +147,8 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
               style={{ border: 'none' }}
               value={item.title}
               onChange={(e) => handleChange(e)}
+              onFocus={() => dispatch(postListActions.selectedTitleMakeEffect({ id: item.id }))}
+              onBlur={() => dispatch(postListActions.selectedTitleMakeEffect({ id: null }))}
               placeholder="Title"
               className="note_title"
               autoComplete="off"
@@ -147,13 +158,15 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
               name="description"
               value={item.description}
               onChange={(e) => handleChange(e)}
+              onFocus={() => dispatch(postListActions.selectedTitleMakeEffect({ id: item.id }))}
+              onBlur={() => dispatch(postListActions.selectedTitleMakeEffect({ id: null }))}
               placeholder="Description..."
               className="note_description"
               style={{ border: 'none', borderTop: '1px solid black' }}
               isFold={item.isFoldPost}
               onDrag={(e) => e.stopPropagation()}
             />
-            <span className="note_reduce" onClick={() => handleFoldButton(item)}>
+            <span className="note_reduce" onClick={() => handleFoldButton(item.id)}>
               -
             </span>
             <span className="note_delete" onClick={() => handleDeleteClick(item)}>

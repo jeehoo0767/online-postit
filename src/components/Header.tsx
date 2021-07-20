@@ -10,7 +10,7 @@ import { RootState } from '../store/index'; // state의 타입 ( useSelector로 
 // }
 
 const Header: React.FC = () => {
-  const { data: getPostData } = useSelector((state: RootState) => state.postListReducer);
+  const { data: getPostData, selectedTitleForEffect } = useSelector((state: RootState) => state.postListReducer);
   const dispatch = useDispatch();
 
   /**
@@ -18,10 +18,12 @@ const Header: React.FC = () => {
    * @param titleParam {PostitValues[]} map으로 순회하며 화면에 보여줄 내용을 가진 state 배열
    */
   const renderNoteTitle = (titleParam: PostitValues[]) => {
-    const titleItem = titleParam.map((item: PostitValues, index: number) => {
+    const titleItem = titleParam.map((item: PostitValues) => {
       return (
-        <div key={index}>
-          <div className="mb-3 header-post-title-list">{item.title}</div>
+        <div key={item.id}>
+          <div className="mb-3 header-post-title-list" style={{ background: item.id === selectedTitleForEffect ? '#eeeeee' : '#ffffff' }}>
+            {item.title}
+          </div>
         </div>
       );
     });
