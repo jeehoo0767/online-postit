@@ -1,6 +1,6 @@
 export const api = {
-  getPostList() {
-    return new Promise((resolve) => {
+  async getPostList() {
+    return await new Promise((resolve) => {
       if (
         (localStorage.getItem('noteList') as string) === '[]' ||
         localStorage.getItem('noteList') === 'null' ||
