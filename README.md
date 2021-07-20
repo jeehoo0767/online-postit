@@ -1,3 +1,4 @@
+![image](https://user-images.githubusercontent.com/66991772/126368052-de7a324b-1c52-481d-a59a-73b01d99054a.png)
 # ✨Welcom to Online-Postit
 >온라인에서 작성 가능한 포스트잇 프로젝트 입니다\
 >문의메일: [jeehoo0767@naver.com](jeehoo0767@naver.com)\
