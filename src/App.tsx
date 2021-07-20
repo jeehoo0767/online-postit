@@ -66,7 +66,7 @@ const App: React.FC = () => {
           top: 0,
           left: 0,
           width: '100%',
-          height: '100%',
+          height: `100%`,
           backgroundImage:
             'url(https://img.freepik.com/free-photo/abstract-and-surface-wood-texture-for-background_74190-12071.jpg?size=626&ext=jpg&ga=GA1.2.1591904653.1622073600)',
           backgroundSize: 'cover',
@@ -88,7 +88,7 @@ const App: React.FC = () => {
                 <Col lg="2">
                   <Header />
                 </Col>
-                <Col lg="10">
+                <Col lg="10" className="pl-0 drag_wrap">
                   <NoteList />
                 </Col>
               </Row>
