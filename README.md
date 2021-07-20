@@ -35,7 +35,7 @@
 >```
 >npm install or yarn install
 >```
->- 프로젝트 시작
+>- 프로젝트 run server
 >```
 >npm start or yarn start
 >```
