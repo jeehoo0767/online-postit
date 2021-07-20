@@ -117,7 +117,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
           onDragStop={(e, d) => handleDragPost(d, item.id)} // 드래그 props
           onResizeStop={(e, direction, ref, delta, position) => handleResizePost(e, direction, ref, delta, position, item)} // 사이즈 조절 props
           cancel=".note_description" // 타이틀 에서만 드래그가 가능하게 textarea를 cancel로 지정
-          bounds=".note-wrap" // 해당 영역 안에서만 움직임 가능
+          bounds=".drag_wrap" // 해당 영역 안에서만 움직임 가능
           enableResizing={{ bottom: item.isFoldPost ? false : true, right: true, bottomRight: item.isFoldPost ? false : true }}
           key={item.id}
         >
