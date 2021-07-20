@@ -44,3 +44,44 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## 리액트와 NODEJS를 활용한 MovieApp
+
+Thank you for having interest in this repository ! 
+
+To use this application, 
+
+
+## "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+  }
+
+## Libary && MiddleWare
+- react-bootstrap
+스타일링을 위해 react-bootstrap 사용
+doc: [https://react-bootstrap.github.io/]
+
+- react-rnd
+드래그, 리사이징을 위해 사용한 라이브러리
+npm: [https://www.npmjs.com/package/react-rnd]
+github: [https://github.com/bokuweb/react-rnd]
+
+- styled-components
+가변 스타일링을 위해 사용한 라이브러리
+doc: [https://styled-components.com/]
+
+- redux-toolkit
+효율적인 리덕스 개발을 위해 사용한 라이브러리
+doc: [https://redux-toolkit.js.org/]
+
+- redux
+전역 상태관리를 위해 사용
+doc: [https://ko.redux.js.org/introduction/getting-started/]
+
+- redux-saga
+효율적인 비동기 처리를 위한 redux middleware (본 프로젝트에 처음 사용경험)
+doc: [https://redux-saga.js.org/]
+
