@@ -12,10 +12,9 @@ const StyledTextArea = styled.textarea<{ isFold: boolean }>`
   resize: none;
 `;
 /**
- * noteList: props로 전달받은 state 객체
- * setPostitValues: setState 함수
- * handleShow: 모달을 띄울 함수
- * setClickedPost: 클릭된 객체를 저장 할 함수 -> 모달 컴포넌트로 전달 될 state
+ * Note컴포넌트로 전달받은 Props의 타입
+ * handleShow {() => void} 모달을 여는 함수
+ * setClickedPost {React.Dispatch<React.SetStateAction<number | undefined>>} 클릭 된 포스트의 아이디를 담을 state를 setState하는 props
  */
 interface NoteListProps {
   handleShow: () => void;
@@ -27,7 +26,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
   const dispatch = useDispatch();
 
   /**
-   *
+   * 인풋 체인지 이벤트 함수, 타겟의 name과 value를 넘기고 스토어에서 해당 name을 가진 key의 value를 action.payload.value로 업데이트
    * @param e {React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>}
    * e => 이벤트가 일어난 input / textArea의 이벤트객체
    */
@@ -98,7 +97,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
   };
 
   /**
-   *
+   * 포스트 접기버튼 함수
    * @param selectedPostId {number} 선택된 객체의 id
    */
   const handleFoldButton = (selectedPostId: number) => {
@@ -138,7 +137,7 @@ const Note: React.FC<NoteListProps> = ({ handleShow, setClickedPost }: NoteListP
               background: item.isFoldPost
                 ? 'lightyellow'
                 : 'linear-gradient(-45deg, transparent 15px, lightyellow 0), linear-gradient(45deg, transparent 15px, rgb(255, 94, 0) 0)',
-            }} // 모서리 주황색
+            }} // 모서리 주황색 스타일
           >
             <input
               id={item.id.toString()}

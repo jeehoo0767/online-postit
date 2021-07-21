@@ -5,11 +5,6 @@ import { postListActions } from '../../store/feature/postSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/index'; // state의 타입 ( useSelector로 접근 시 타입이 필요 )
 
-/**
- * noteList: props로 내려받은 state 객체
- * setPostitValues: setState함수
- */
-
 const NoteList: React.FC = () => {
   const { data: getPostData } = useSelector((state: RootState) => state.postListReducer);
 
