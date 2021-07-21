@@ -29,7 +29,7 @@
 # 🚀 Getting Started
 >- **프로젝트 클론 - 원격 저장소에서 클론 받기**
 >```
->git clnoe https://github.com/jeehoo0767/pre-task.git
+>git clone https://github.com/jeehoo0767/pre-task.git
 >```
 >- **브랜치 체크아웃**
 >```
