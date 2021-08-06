@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/pre-task/static/css/main.0bb6d922.chunk.css",
-    "main.js": "/pre-task/static/js/main.0600a808.chunk.js",
-    "main.js.map": "/pre-task/static/js/main.0600a808.chunk.js.map",
-    "runtime-main.js": "/pre-task/static/js/runtime-main.60fc1fab.js",
-    "runtime-main.js.map": "/pre-task/static/js/runtime-main.60fc1fab.js.map",
-    "static/css/2.fb17aa6d.chunk.css": "/pre-task/static/css/2.fb17aa6d.chunk.css",
-    "static/js/2.9e5d5ff5.chunk.js": "/pre-task/static/js/2.9e5d5ff5.chunk.js",
-    "static/js/2.9e5d5ff5.chunk.js.map": "/pre-task/static/js/2.9e5d5ff5.chunk.js.map",
-    "static/js/3.7e5e0889.chunk.js": "/pre-task/static/js/3.7e5e0889.chunk.js",
-    "static/js/3.7e5e0889.chunk.js.map": "/pre-task/static/js/3.7e5e0889.chunk.js.map",
+    "main.js": "/pre-task/static/js/main.c86450c8.chunk.js",
+    "main.js.map": "/pre-task/static/js/main.c86450c8.chunk.js.map",
+    "runtime-main.js": "/pre-task/static/js/runtime-main.7e854cd9.js",
+    "runtime-main.js.map": "/pre-task/static/js/runtime-main.7e854cd9.js.map",
+    "static/css/2.4be38407.chunk.css": "/pre-task/static/css/2.4be38407.chunk.css",
+    "static/js/2.b59d05a5.chunk.js": "/pre-task/static/js/2.b59d05a5.chunk.js",
+    "static/js/2.b59d05a5.chunk.js.map": "/pre-task/static/js/2.b59d05a5.chunk.js.map",
+    "static/js/3.be0c5901.chunk.js": "/pre-task/static/js/3.be0c5901.chunk.js",
+    "static/js/3.be0c5901.chunk.js.map": "/pre-task/static/js/3.be0c5901.chunk.js.map",
     "index.html": "/pre-task/index.html",
-    "static/css/2.fb17aa6d.chunk.css.map": "/pre-task/static/css/2.fb17aa6d.chunk.css.map",
+    "static/css/2.4be38407.chunk.css.map": "/pre-task/static/css/2.4be38407.chunk.css.map",
     "static/css/main.0bb6d922.chunk.css.map": "/pre-task/static/css/main.0bb6d922.chunk.css.map",
-    "static/js/2.9e5d5ff5.chunk.js.LICENSE.txt": "/pre-task/static/js/2.9e5d5ff5.chunk.js.LICENSE.txt"
+    "static/js/2.b59d05a5.chunk.js.LICENSE.txt": "/pre-task/static/js/2.b59d05a5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.60fc1fab.js",
-    "static/css/2.fb17aa6d.chunk.css",
-    "static/js/2.9e5d5ff5.chunk.js",
+    "static/js/runtime-main.7e854cd9.js",
+    "static/css/2.4be38407.chunk.css",
+    "static/js/2.b59d05a5.chunk.js",
     "static/css/main.0bb6d922.chunk.css",
-    "static/js/main.0600a808.chunk.js"
+    "static/js/main.c86450c8.chunk.js"
   ]
 }
