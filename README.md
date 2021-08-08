@@ -1,7 +1,7 @@
 # ✨Welcom to Online-Postit
 >온라인에서 작성 가능한 포스트잇 프로젝트 입니다\
 >문의메일: [jeehoo0767@naver.com](jeehoo0767@naver.com)\
->프로젝트 URL : [https://jeehoo0767.github.io/pre-task/](https://jeehoo0767.github.io/pre-task/)
+>프로젝트 URL : [https://jeehoo0767.github.io/online-postit/](https://jeehoo0767.github.io/online-postit/)
 >- git branch 설명
 >    - **master** 마스터 브랜치(최종버전)
 >    - **feture/stateManagement/hook** 전역이 아닌 hook을 사용한 상태관리 버전
